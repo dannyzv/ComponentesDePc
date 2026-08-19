@@ -5,7 +5,8 @@ import PowerMeter from './PowerMeter.jsx';
 import PriceDisplay from './PriceDisplay.jsx';
 
 export default function BuildSummary() {
-  const { build, report, checking, totalPrice, removeComponent, clearBuild } = useBuild();
+  const { build, report, checking, reportError, totalPrice, removeComponent, clearBuild } =
+    useBuild();
   const entries = Object.entries(build);
   const show = entries.length > 0;
 
@@ -61,6 +62,8 @@ export default function BuildSummary() {
           <div className="summary-compat">
             {checking ? (
               <span className="muted">Verificando compatibilidad…</span>
+            ) : reportError ? (
+              <span className="error-text">No se pudo verificar: {reportError}</span>
             ) : (
               <CompatibilityBadge report={report} />
             )}

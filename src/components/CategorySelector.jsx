@@ -10,6 +10,7 @@ export default function CategorySelector({ categories, active, onChange, selecte
             type="button"
             className={`chip ${isActive ? 'is-active' : ''} ${hasComponent ? 'is-selected' : ''}`}
             onClick={() => onChange(key)}
+            aria-pressed={isActive}
           >
             {label}
             {hasComponent && <span className="chip-dot" title="Componente en el build" />}

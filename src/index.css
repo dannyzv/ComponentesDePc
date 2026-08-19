@@ -47,6 +47,34 @@ button {
   cursor: pointer;
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card,
+.result,
+.hero,
+.preset-card {
+  animation: fadeInUp 0.35s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 .glass {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
@@ -439,21 +467,33 @@ button {
   background: rgba(59, 130, 246, 0.22);
 }
 
-.chip.is-selected:not(.is-active)::after {
-  content: '';
-  position: absolute;
-  right: 6px;
-  top: 6px;
+.chip-dot {
+  display: inline-block;
+  margin-left: 7px;
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background: var(--success);
+  vertical-align: middle;
 }
 
 .component-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 18px;
+}
+
+.builder-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .builder-layout {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ---------- Build Summary ---------- */

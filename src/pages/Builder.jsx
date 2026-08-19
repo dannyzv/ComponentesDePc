@@ -52,23 +52,27 @@ export default function Builder() {
         selected={build}
       />
 
-      {loading && <p className="muted">Cargando componentes…</p>}
-      {error && <p className="error-text">{error}</p>}
-      {!loading && !error && components.length === 0 && (
-        <p className="muted">No hay componentes en esta categoría.</p>
-      )}
+      <div className="builder-layout">
+        <div>
+          {loading && <p className="muted">Cargando componentes…</p>}
+          {error && <p className="error-text">{error}</p>}
+          {!loading && !error && components.length === 0 && (
+            <p className="muted">No hay componentes en esta categoría.</p>
+          )}
 
-      <div className="component-grid">
-        {components.map((component) => (
-          <ComponentCard
-            key={component._id}
-            component={component}
-            onAdd={() => addComponent(component)}
-          />
-        ))}
+          <div className="component-grid">
+            {components.map((component) => (
+              <ComponentCard
+                key={component._id}
+                component={component}
+                onAdd={() => addComponent(component)}
+              />
+            ))}
+          </div>
+        </div>
+
+        <BuildSummary />
       </div>
-
-      <BuildSummary />
     </div>
   );
 }

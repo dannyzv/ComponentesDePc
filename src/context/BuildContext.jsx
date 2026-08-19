@@ -7,6 +7,7 @@ export function BuildProvider({ children }) {
   const [build, setBuild] = useState({});
   const [report, setReport] = useState(null);
   const [checking, setChecking] = useState(false);
+  const [reportError, setReportError] = useState(null);
 
   function addComponent(component) {
     setBuild((current) => ({ ...current, [component.category]: component }));
@@ -23,18 +24,23 @@ export function BuildProvider({ children }) {
   function clearBuild() {
     setBuild({});
     setReport(null);
+    setReportError(null);
   }
 
   async function refreshReport() {
     const entries = Object.values(build);
     if (entries.length === 0) {
       setReport(null);
+      setReportError(null);
       return;
     }
     setChecking(true);
+    setReportError(null);
     try {
       const result = await checkCompatibility(entries.map((c) => ({ id: c._id })));
       setReport(result);
+    } catch (error) {
+      setReportError(error.message);
     } finally {
       setChecking(false);
     }
@@ -54,13 +60,14 @@ export function BuildProvider({ children }) {
       build,
       report,
       checking,
+      reportError,
       totalPrice,
       addComponent,
       removeComponent,
       clearBuild,
       refreshReport,
     }),
-    [build, report, checking, totalPrice]
+    [build, report, checking, reportError, totalPrice]
   );
 
   return <BuildContext.Provider value={value}>{children}</BuildContext.Provider>;
