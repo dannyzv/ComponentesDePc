@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { optimizeBuild } from '../services/api.js';
+import { useAuth } from '../context/AuthContext.jsx';
 import PriceDisplay from '../components/PriceDisplay.jsx';
 import { useBuild } from '../context/BuildContext.jsx';
 
@@ -13,6 +14,8 @@ const USE_TYPES = [
 
 export default function Optimizer() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { isAuthenticated } = useAuth();
   const { addComponent } = useBuild();
   const [budget, setBudget] = useState(1200);
   const [useType, setUseType] = useState('gaming');
@@ -28,6 +31,10 @@ export default function Optimizer() {
       const data = await optimizeBuild({ budget: Number(budget), useType });
       setResult(data);
     } catch (err) {
+      if (!isAuthenticated || err.message.includes('Token')) {
+        navigate('/login', { state: { from: location.pathname } });
+        return;
+      }
       setError(err.message);
     } finally {
       setLoading(false);
