@@ -1,13 +1,13 @@
 import { formatCOP } from '../utils/currency.js';
 
 const SLOT_CONFIG = [
-  { key: 'cpu', label: 'CPU', top: '6%', left: '34%', w: '22%', h: '11%', color: '#3b82f6' },
-  { key: 'cooling', label: 'Cooler', top: '6%', left: '60%', w: '26%', h: '11%', color: '#06b6d4' },
-  { key: 'motherboard', label: 'Motherboard', top: '19%', left: '8%', w: '84%', h: '16%', color: '#8b5cf6' },
-  { key: 'ram', label: 'RAM', top: '21%', left: '70%', w: '18%', h: '12%', color: '#f59e0b' },
-  { key: 'gpu', label: 'GPU', top: '38%', left: '8%', w: '72%', h: '14%', color: '#22c55e' },
-  { key: 'storage', label: 'SSD', top: '55%', left: '8%', w: '30%', h: '10%', color: '#ec4899' },
-  { key: 'psu', label: 'PSU', top: '70%', left: '8%', w: '38%', h: '14%', color: '#f97316' },
+  { key: 'cpu', label: 'CPU', top: '28%', left: '18%', w: '16%', h: '10%', color: '#3b82f6' },
+  { key: 'cooling', label: 'Cooler', top: '12%', left: '10%', w: '22%', h: '18%', color: '#06b6d4' },
+  { key: 'motherboard', label: 'Motherboard', top: '10%', left: '8%', w: '55%', h: '55%', color: '#8b5cf6' },
+  { key: 'ram', label: 'RAM', top: '28%', left: '38%', w: '12%', h: '16%', color: '#f59e0b' },
+  { key: 'gpu', label: 'GPU', top: '55%', left: '8%', w: '55%', h: '14%', color: '#22c55e' },
+  { key: 'storage', label: 'SSD', top: '72%', left: '8%', w: '24%', h: '8%', color: '#ec4899' },
+  { key: 'psu', label: 'PSU', top: '80%', left: '8%', w: '36%', h: '14%', color: '#f97316' },
 ];
 
 export default function PCFinal3D({ selected }) {
@@ -19,8 +19,13 @@ export default function PCFinal3D({ selected }) {
     <div className="pcfinal-wrapper">
       <div className="pcfinal-scene">
         <div className="pcfinal-case">
-          <div className="pcfinal-glass" />
-          <div className="pcfinal-inner">
+          <img
+            src="/pc-gamer.png.jpg"
+            alt="PC Gamer"
+            className="pcfinal-image"
+            draggable={false}
+          />
+          <div className="pcfinal-overlay">
             {SLOT_CONFIG.map((slot) => {
               const component = selected[slot.key];
               const isFilled = !!component;
@@ -51,15 +56,6 @@ export default function PCFinal3D({ selected }) {
                 </div>
               );
             })}
-
-            <div className="pcfinal-lightbar" />
-            <div className="pcfinal-reflection" />
-          </div>
-
-          <div className="pcfinal-side">
-            <div className="pcfinal-vent" />
-            <div className="pcfinal-vent" />
-            <div className="pcfinal-vent" />
           </div>
         </div>
       </div>
