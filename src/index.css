@@ -1,18 +1,19 @@
 :root {
-  --bg: #0b1020;
-  --bg-2: #121a33;
-  --text: #f4f6ff;
-  --muted: #9aa3c0;
-  --primary: #3b82f6;
-  --primary-2: #2563eb;
+  --bg: #0a0b1a;
+  --bg-2: #111228;
+  --text: #f0eeff;
+  --muted: #9b8ec4;
+  --primary: #c374fc;
+  --primary-2: #a855f7;
+  --accent: #21bced;
   --success: #22c55e;
   --warning: #f59e0b;
   --error: #ef4444;
-  --glass-bg: rgba(255, 255, 255, 0.06);
-  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-bg: rgba(195, 116, 252, 0.06);
+  --glass-border: rgba(195, 116, 252, 0.18);
   --glass-blur: 14px;
   --radius: 16px;
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 * {
@@ -124,7 +125,7 @@ button {
   width: 34px;
   height: 34px;
   border-radius: 10px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  background: linear-gradient(135deg, var(--primary), var(--accent));
   font-size: 12px;
   font-weight: 800;
 }
@@ -172,7 +173,7 @@ button {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  background: linear-gradient(135deg, var(--primary), var(--accent));
   color: #fff;
 }
 
@@ -362,7 +363,7 @@ button {
   border: none;
   border-radius: 10px;
   padding: 9px 18px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  background: linear-gradient(135deg, var(--primary), var(--accent));
   color: #fff;
   font-weight: 700;
   transition: filter 0.15s;
@@ -1076,7 +1077,7 @@ button {
 .assistant-progress-fill {
   height: 100%;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--primary), var(--success));
+  background: linear-gradient(90deg, var(--primary), var(--accent));
   transition: width 0.4s ease;
 }
 
@@ -1211,7 +1212,7 @@ button {
   transform-style: preserve-3d;
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.5),
-    inset 0 0 40px rgba(59, 130, 246, 0.05);
+    inset 0 0 40px rgba(195, 116, 252, 0.06);
   transition: transform 0.4s ease;
   overflow: hidden;
 }
@@ -1267,8 +1268,8 @@ button {
 }
 
 @keyframes slotPulse {
-  0%, 100% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.2); }
-  50% { box-shadow: 0 0 25px rgba(59, 130, 246, 0.4); }
+  0%, 100% { box-shadow: 0 0 15px rgba(195, 116, 252, 0.3); }
+  50% { box-shadow: 0 0 25px rgba(33, 188, 237, 0.5); }
 }
 
 .pc3d-slot-icon {
@@ -1433,7 +1434,7 @@ button {
   align-items: center;
   margin-bottom: 40px;
   padding: 40px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  background: linear-gradient(135deg, rgba(195, 116, 252, 0.15), rgba(33, 188, 237, 0.08));
   border: 1px solid var(--glass-border);
   border-radius: 20px;
 }
@@ -1460,7 +1461,7 @@ button {
   overflow: hidden;
   box-shadow:
     0 30px 80px rgba(0, 0, 0, 0.6),
-    0 0 60px rgba(59, 130, 246, 0.1);
+    0 0 60px rgba(195, 116, 252, 0.12);
   animation: pcFloat 6s ease-in-out infinite;
 }
 
@@ -1605,7 +1606,7 @@ button {
   font-weight: 900;
   color: var(--success);
   line-height: 1;
-  text-shadow: 0 0 30px rgba(34, 197, 94, 0.2);
+  text-shadow: 0 0 30px rgba(33, 188, 237, 0.25);
 }
 
 .pcfinal-specs {
