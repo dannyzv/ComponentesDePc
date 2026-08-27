@@ -215,7 +215,7 @@ export const GAMER_COMPONENTS = [
   c('Lian Li V3000 Plus', 'case', 'Lian Li', 1350000, { formFactor: 'e-atx', maxGpuLength: 503, radiatorSupport: 480 }),
 ];
 
-export const STEP_ORDER = ['cpu', 'ram', 'psu', 'motherboard', 'storage', 'case', 'cooling'];
+export const STEP_ORDER = ['cpu', 'gpu', 'ram', 'psu', 'motherboard', 'storage', 'case', 'cooling'];
 
 export const STEP_LABELS = {
   cpu: 'Procesador',

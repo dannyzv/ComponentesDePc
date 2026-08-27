@@ -51,7 +51,7 @@ export default function PCVisual3D({ selected, currentStep, onSlotClick }) {
       <div className="pc3d-counter">
         <span className="pc3d-counter-fill">{filledCount}</span>
         <span className="pc3d-counter-sep">/</span>
-        <span className="pc3d-counter-total">7</span>
+        <span className="pc3d-counter-total">8</span>
         <span className="pc3d-counter-label">componentes</span>
       </div>
     </div>
