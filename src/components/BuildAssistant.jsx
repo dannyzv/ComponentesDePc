@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useBuild } from '../context/BuildContext.jsx';
 import {
@@ -29,6 +29,17 @@ const PLATFORM_INFO = {
   },
 };
 
+const SLOT_POSITIONS = {
+  cpu: { top: '25%', left: '38%', w: '8%', h: '5%' },
+  cooling: { top: '20%', left: '34%', w: '10%', h: '7%' },
+  motherboard: { top: '18%', left: '30%', w: '28%', h: '38%' },
+  ram: { top: '25%', left: '48%', w: '6%', h: '8%' },
+  gpu: { top: '40%', left: '30%', w: '28%', h: '7%' },
+  storage: { top: '48%', left: '30%', w: '12%', h: '4%' },
+  psu: { top: '53%', left: '30%', w: '18%', h: '6%' },
+  case: { top: '0', left: '0', w: '100%', h: '100%' },
+};
+
 export default function BuildAssistant({ onComplete }) {
   const navigate = useNavigate();
   const { loadBuild } = useBuild();
@@ -37,6 +48,10 @@ export default function BuildAssistant({ onComplete }) {
   const [platform, setPlatform] = useState(null);
   const [selected, setSelected] = useState({});
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
+  const [flyingComponent, setFlyingComponent] = useState(null);
+
+  const pcRef = useRef(null);
+  const listRef = useRef(null);
 
   const currentCategory = step !== 'platform' ? STEP_ORDER[currentCategoryIndex] : null;
 
@@ -74,7 +89,29 @@ export default function BuildAssistant({ onComplete }) {
   }, []);
 
   const handleSelectComponent = useCallback(
-    (component) => {
+    (component, event) => {
+      if (event && pcRef.current && listRef.current) {
+        const cardRect = event.currentTarget.getBoundingClientRect();
+        const pcRect = pcRef.current.getBoundingClientRect();
+        const slot = SLOT_POSITIONS[currentCategory];
+
+        const slotAbsX = pcRect.left + (parseFloat(slot.left) / 100) * pcRect.width;
+        const slotAbsY = pcRect.top + (parseFloat(slot.top) / 100) * pcRect.height;
+        const slotAbsW = (parseFloat(slot.w) / 100) * pcRect.width;
+        const slotAbsH = (parseFloat(slot.h) / 100) * pcRect.height;
+
+        setFlyingComponent({
+          name: component.name.split(' ').slice(0, 2).join(' '),
+          startX: cardRect.left + cardRect.width / 2,
+          startY: cardRect.top + cardRect.height / 2,
+          endX: slotAbsX + slotAbsW / 2,
+          endY: slotAbsY + slotAbsH / 2,
+          id: Date.now(),
+        });
+
+        setTimeout(() => setFlyingComponent(null), 650);
+      }
+
       const next = { ...selected, [currentCategory]: component };
       setSelected(next);
 
@@ -146,11 +183,11 @@ export default function BuildAssistant({ onComplete }) {
   return (
     <section className="assistant-section">
       <div className="assistant-layout">
-        <div className="assistant-pc">
+        <div className="assistant-pc" ref={pcRef}>
           <PCVisual3D selected={selected} currentStep={currentCategory} onSlotClick={handleSlotClick} />
         </div>
 
-        <div className="assistant-panel">
+        <div className="assistant-panel" ref={listRef}>
           <div className="assistant-panel-head">
             <button
               type="button"
@@ -186,7 +223,7 @@ export default function BuildAssistant({ onComplete }) {
                   key={comp._id}
                   type="button"
                   className={`assistant-component-card glass ${isActive ? 'is-selected' : ''}`}
-                  onClick={() => handleSelectComponent(comp)}
+                  onClick={(e) => handleSelectComponent(comp, e)}
                 >
                   <div className="acc-info">
                     <span className="acc-name">{comp.name}</span>
@@ -214,6 +251,21 @@ export default function BuildAssistant({ onComplete }) {
           </div>
         </div>
       </div>
+
+      {flyingComponent && (
+        <div
+          key={flyingComponent.id}
+          className="flying-component"
+          style={{
+            '--startX': `${flyingComponent.startX}px`,
+            '--startY': `${flyingComponent.startY}px`,
+            '--endX': `${flyingComponent.endX}px`,
+            '--endY': `${flyingComponent.endY}px`,
+          }}
+        >
+          <span className="flying-name">{flyingComponent.name}</span>
+        </div>
+      )}
     </section>
   );
 }
