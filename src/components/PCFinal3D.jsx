@@ -112,6 +112,24 @@ export default function PCFinal3D({ selected }) {
                 </span>
               </div>
             )}
+            {selected.motherboard && (
+              <div className="pcfinal-spec">
+                <span className="pcfinal-spec-label">Motherboard</span>
+                <span className="pcfinal-spec-value">{selected.motherboard.name}</span>
+              </div>
+            )}
+            {selected.cooling && (
+              <div className="pcfinal-spec">
+                <span className="pcfinal-spec-label">Cooler</span>
+                <span className="pcfinal-spec-value">{selected.cooling.name}</span>
+              </div>
+            )}
+            {selected.case && (
+              <div className="pcfinal-spec">
+                <span className="pcfinal-spec-label">Case</span>
+                <span className="pcfinal-spec-value">{selected.case.name}</span>
+              </div>
+            )}
           </div>
         )}
       </div>
