@@ -1,13 +1,13 @@
 import { formatCOP } from '../utils/currency.js';
 
 const SLOT_CONFIG = [
-  { key: 'cpu', label: 'CPU', top: '20%', left: '28%', w: '8%', h: '5%', color: '#3b82f6' },
-  { key: 'cooling', label: 'Cooler', top: '12%', left: '24%', w: '10%', h: '8%', color: '#06b6d4' },
-  { key: 'motherboard', label: 'Motherboard', top: '10%', left: '20%', w: '28%', h: '40%', color: '#8b5cf6' },
-  { key: 'ram', label: 'RAM', top: '20%', left: '38%', w: '6%', h: '10%', color: '#f59e0b' },
-  { key: 'gpu', label: 'GPU', top: '38%', left: '20%', w: '28%', h: '8%', color: '#22c55e' },
-  { key: 'storage', label: 'SSD', top: '48%', left: '20%', w: '12%', h: '5%', color: '#ec4899' },
-  { key: 'psu', label: 'PSU', top: '55%', left: '20%', w: '18%', h: '7%', color: '#f97316' },
+  { key: 'cpu', label: 'CPU', top: '15%', left: '28%', w: '8%', h: '5%', color: '#3b82f6' },
+  { key: 'cooling', label: 'Cooler', top: '10%', left: '24%', w: '10%', h: '7%', color: '#06b6d4' },
+  { key: 'motherboard', label: 'Motherboard', top: '8%', left: '20%', w: '28%', h: '38%', color: '#8b5cf6' },
+  { key: 'ram', label: 'RAM', top: '15%', left: '38%', w: '6%', h: '8%', color: '#f59e0b' },
+  { key: 'gpu', label: 'GPU', top: '30%', left: '20%', w: '28%', h: '7%', color: '#22c55e' },
+  { key: 'storage', label: 'SSD', top: '38%', left: '20%', w: '12%', h: '4%', color: '#ec4899' },
+  { key: 'psu', label: 'PSU', top: '43%', left: '20%', w: '18%', h: '6%', color: '#f97316' },
 ];
 
 export default function PCFinal3D({ selected }) {
