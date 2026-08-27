@@ -1491,7 +1491,6 @@ button {
   border-radius: 8px;
   transition: all 0.4s ease;
   overflow: hidden;
-  backdrop-filter: blur(4px);
 }
 
 .pcfinal-slot.empty {
