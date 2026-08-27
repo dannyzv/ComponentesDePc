@@ -1226,6 +1226,7 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 10px;
   overflow: hidden;
+  z-index: 1;
 }
 
 .pc3d-slot {
@@ -1463,7 +1464,8 @@ button {
   animation: pcFloat 6s ease-in-out infinite;
 }
 
-.pcfinal-image {
+.pcfinal-image,
+.pc3d-mobo-img {
   display: block;
   width: 100%;
   height: auto;

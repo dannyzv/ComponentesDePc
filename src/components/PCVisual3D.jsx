@@ -18,6 +18,7 @@ export default function PCVisual3D({ selected, currentStep, onSlotClick }) {
   return (
     <div className="pc3d-container">
       <div className="pc3d-case">
+        <img src="/placa-base.jpg.png" alt="Placa Base" className="pc3d-mobo-img" draggable={false} />
         <div className="pc3d-inner">
           {SLOT_CONFIG.filter((s) => !s.isFrame).map((slot) => {
             const isSelected = !!selected[slot.key];
