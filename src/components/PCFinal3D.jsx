@@ -20,7 +20,7 @@ export default function PCFinal3D({ selected }) {
       <div className="pcfinal-scene">
         <div className="pcfinal-case">
           <img
-            src="/pc-gamer.png.jpg"
+            src="/pc-gamer.png"
             alt="PC Gamer"
             className="pcfinal-image"
             draggable={false}
