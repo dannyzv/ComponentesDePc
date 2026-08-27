@@ -25,16 +25,10 @@ export default function Navbar() {
           Inicio
         </NavLink>
         <NavLink
-          to="/builder"
+          to="/ensamblar"
           className={({ isActive }) => (isActive ? 'nav-link is-active' : 'nav-link')}
         >
-          Constructor
-        </NavLink>
-        <NavLink
-          to="/optimizer"
-          className={({ isActive }) => (isActive ? 'nav-link is-active' : 'nav-link')}
-        >
-          Optimizador
+          Ensambla tu PC
         </NavLink>
         {isAuthenticated ? (
           <span className="nav-user">

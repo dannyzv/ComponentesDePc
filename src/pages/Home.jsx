@@ -1,79 +1,85 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getPresets } from '../services/api.js';
-import PresetCard from '../components/PresetCard.jsx';
-import BuildAssistant from '../components/BuildAssistant.jsx';
 
-const HERO_FEATURES = [
-  'Catálogo organizado por categorías',
-  'Compatibilidad verificada en tiempo real',
-  'Configuraciones óptimas según presupuesto',
-  'Precio total en pesos colombianos (COP)',
+const FEATURES = [
+  {
+    icon: '🎮',
+    title: 'Componentes Gamer',
+    desc: 'Catalogo completo de procesadores, tarjetas de video, memorias y mas — todos de alto rendimiento.',
+  },
+  {
+    icon: '🔍',
+    title: 'Compatibilidad en Tiempo Real',
+    desc: 'Verificamos automaticamente que todos los componentes sean compatibles entre si.',
+  },
+  {
+    icon: '💰',
+    title: 'Precios en Pesos Colombianos',
+    desc: 'Todos los precios estan en COP con datos reales de tiendas colombianas.',
+  },
+  {
+    icon: '🖥️',
+    title: 'PC 3D Interactiva',
+    desc: 'Visualiza tu ensamble en una PC 3D que se llena a medida que seleccionas componentes.',
+  },
+  {
+    icon: '⚡',
+    title: 'Paso a Paso Guiado',
+    desc: 'Nuestro asistente te guia desde la plataforma (Intel/AMD) hasta el ultimo componente.',
+  },
+  {
+    icon: '📊',
+    title: 'Resumen de Build',
+    desc: 'Ve el desglose completo de tu ensamble con el precio total antes de comprar.',
+  },
 ];
 
 export default function Home() {
-  const [presets, setPresets] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    getPresets()
-      .then((data) => setPresets(data.presets))
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
-  }, []);
-
   return (
     <div className="home">
       <section className="hero glass">
-        <span className="hero-badge">PC Builder</span>
+        <span className="hero-badge">PC Builder Colombia</span>
         <h1 className="hero-title">
-          Arma tu PC Gamer,
+          Bienvenido a tu
           <br />
-          paso a paso.
+          Ensamblador de PC Gamer
         </h1>
         <p className="hero-subtitle">
-          Selecciona componentes gamer de alto rendimiento, verifica compatibilidad en
-          tiempo real y obtén el mejor rendimiento — todo en pesos colombianos.
+          La herramienta definitiva para armar tu PC gamer ideal.
+          Selecciona componentes de alto rendimiento, verifica compatibilidad
+          en tiempo real y obtene el mejor rendimiento — todo en pesos colombianos.
         </p>
         <div className="hero-actions">
-          <a href="#assistant" className="btn btn-primary">
-            Arma tu PC
-          </a>
-          <Link to="/optimizer" className="btn btn-secondary">
-            Optimizar por presupuesto
+          <Link to="/ensamblar" className="btn btn-primary">
+            Ensambla tu PC
+          </Link>
+          <Link to="/login" className="btn btn-secondary">
+            Iniciar Sesion
           </Link>
         </div>
-        <ul className="hero-features">
-          {HERO_FEATURES.map((feature) => (
-            <li key={feature}>{feature}</li>
-          ))}
-        </ul>
       </section>
 
-      <div id="assistant">
-        <BuildAssistant />
-      </div>
-
-      <section className="presets-section">
-        <div className="section-head">
-          <h2>Builds prediseñados</h2>
-          <Link to="/optimizer" className="link">
-            Generar el mío →
-          </Link>
-        </div>
-
-        {loading && <p className="muted">Cargando builds…</p>}
-        {error && <p className="error-text">{error}</p>}
-        {!loading && !error && presets.length === 0 && (
-          <p className="muted">No hay builds prediseñados. Ejecuta el seed del backend.</p>
-        )}
-
-        <div className="preset-grid">
-          {presets.map((preset) => (
-            <PresetCard key={preset._id} preset={preset} />
+      <section className="welcome-features">
+        <h2 className="welcome-features-title">Por que usar nuestro ensamblador?</h2>
+        <div className="welcome-features-grid">
+          {FEATURES.map((feature) => (
+            <div key={feature.title} className="welcome-feature-card glass">
+              <span className="welcome-feature-icon">{feature.icon}</span>
+              <h3 className="welcome-feature-title">{feature.title}</h3>
+              <p className="welcome-feature-desc">{feature.desc}</p>
+            </div>
           ))}
         </div>
+      </section>
+
+      <section className="welcome-cta glass">
+        <h2>Listo para ensamblar tu PC gamer?</h2>
+        <p className="muted">
+          Nuestro asistente te guia paso a paso para elegir los mejores
+          componentes segun tu presupuesto y necesidades.
+        </p>
+        <Link to="/ensamblar" className="btn btn-primary">
+          Comenzar Ahora
+        </Link>
       </section>
     </div>
   );

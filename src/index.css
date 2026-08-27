@@ -1353,3 +1353,71 @@ button {
     align-items: stretch;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   Welcome Page — Features & CTA
+   ═══════════════════════════════════════════════════════════════ */
+.welcome-features {
+  margin-top: 56px;
+}
+
+.welcome-features-title {
+  text-align: center;
+  margin: 0 0 32px;
+  font-size: 26px;
+}
+
+.welcome-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.welcome-feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.welcome-feature-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+}
+
+.welcome-feature-icon {
+  font-size: 32px;
+}
+
+.welcome-feature-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.welcome-feature-desc {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.welcome-cta {
+  margin-top: 48px;
+  text-align: center;
+  padding: 48px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.welcome-cta h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.welcome-cta .btn {
+  margin-top: 8px;
+}
