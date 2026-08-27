@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getPresets } from '../services/api.js';
 import PresetCard from '../components/PresetCard.jsx';
+import BuildAssistant from '../components/BuildAssistant.jsx';
 
 const HERO_FEATURES = [
   'Catálogo organizado por categorías',
   'Compatibilidad verificada en tiempo real',
   'Configuraciones óptimas según presupuesto',
-  'Precio total con desglose',
+  'Precio total en pesos colombianos (COP)',
 ];
 
 export default function Home() {
@@ -27,18 +28,18 @@ export default function Home() {
       <section className="hero glass">
         <span className="hero-badge">PC Builder</span>
         <h1 className="hero-title">
-          Arma tu PC ideal,
+          Arma tu PC Gamer,
           <br />
-          sin errores de compatibilidad.
+          paso a paso.
         </h1>
         <p className="hero-subtitle">
-          Selecciona componentes, verifica compatibilidad en tiempo real y obtén el
-          mejor rendimiento según tu presupuesto.
+          Selecciona componentes gamer de alto rendimiento, verifica compatibilidad en
+          tiempo real y obtén el mejor rendimiento — todo en pesos colombianos.
         </p>
         <div className="hero-actions">
-          <Link to="/builder" className="btn btn-primary">
+          <a href="#assistant" className="btn btn-primary">
             Arma tu PC
-          </Link>
+          </a>
           <Link to="/optimizer" className="btn btn-secondary">
             Optimizar por presupuesto
           </Link>
@@ -49,6 +50,10 @@ export default function Home() {
           ))}
         </ul>
       </section>
+
+      <div id="assistant">
+        <BuildAssistant />
+      </div>
 
       <section className="presets-section">
         <div className="section-head">

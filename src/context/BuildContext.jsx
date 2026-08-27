@@ -27,6 +27,12 @@ export function BuildProvider({ children }) {
     setReportError(null);
   }
 
+  function loadBuild(component) {
+    if (component && component.category) {
+      setBuild((current) => ({ ...current, [component.category]: component }));
+    }
+  }
+
   async function refreshReport() {
     const entries = Object.values(build);
     if (entries.length === 0) {
@@ -65,6 +71,7 @@ export function BuildProvider({ children }) {
       addComponent,
       removeComponent,
       clearBuild,
+      loadBuild,
       refreshReport,
     }),
     [build, report, checking, reportError, totalPrice]

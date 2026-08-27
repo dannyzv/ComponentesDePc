@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { formatCOP } from '../utils/currency.js';
 
 export default function PriceDisplay({ value, compact = false }) {
   const [display, setDisplay] = useState(0);
@@ -28,14 +29,7 @@ export default function PriceDisplay({ value, compact = false }) {
     return () => cancelAnimationFrame(raf);
   }, [value]);
 
-  const formatted = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(display);
-
   return (
-    <span className={compact ? 'price-compact' : 'price-display'}>{formatted}</span>
+    <span className={compact ? 'price-compact' : 'price-display'}>{formatCOP(display)}</span>
   );
 }

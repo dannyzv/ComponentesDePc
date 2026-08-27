@@ -1,3 +1,5 @@
+import { formatCOP } from '../utils/currency.js';
+
 const SPEC_FIELDS = {
   cpu: ['socket', 'cores', 'threads', 'tdp'],
   motherboard: ['socket', 'formFactor', 'ramType', 'ramSlots'],
@@ -34,7 +36,7 @@ export default function ComponentCard({ component, onAdd }) {
       </ul>
 
       <div className="card-foot">
-        <span className="card-price">${component.price}</span>
+        <span className="card-price">{formatCOP(component.price)}</span>
         <button className="btn-add" onClick={onAdd}>
           Agregar
         </button>

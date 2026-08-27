@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useBuild } from '../context/BuildContext.jsx';
+import { formatCOP } from '../utils/currency.js';
 import CompatibilityBadge from './CompatibilityBadge.jsx';
 import PowerMeter from './PowerMeter.jsx';
 import PriceDisplay from './PriceDisplay.jsx';
@@ -43,7 +44,7 @@ export default function BuildSummary() {
                   <span className="summary-name">{component.name}</span>
                 </div>
                 <div className="summary-item-actions">
-                  <span className="summary-price">${component.price}</span>
+                  <span className="summary-price">{formatCOP(component.price)}</span>
                   <button
                     className="summary-remove"
                     onClick={() => removeComponent(category)}

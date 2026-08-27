@@ -935,3 +935,421 @@ button {
 .login-demo:hover {
   text-decoration: underline;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   Build Assistant — Step-by-step wizard
+   ═══════════════════════════════════════════════════════════════ */
+.assistant-section {
+  margin-top: 48px;
+}
+
+.assistant-header {
+  text-align: center;
+  padding: 36px 24px;
+  margin-bottom: 32px;
+}
+
+.assistant-title {
+  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+/* Platform Selection */
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.platform-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 40px 24px;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  border: 2px solid var(--glass-border);
+}
+
+.platform-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent, var(--primary));
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+}
+
+.platform-icon {
+  font-size: 28px;
+  font-weight: 900;
+  padding: 12px 24px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  letter-spacing: 1px;
+}
+
+.platform-card[style*="#0071c5"] .platform-icon {
+  color: #0071c5;
+}
+
+.platform-card[style*="#ed1c24"] .platform-icon {
+  color: #ed1c24;
+}
+
+.platform-name {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.platform-desc {
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Assistant Layout */
+.assistant-layout {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .assistant-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.assistant-pc {
+  position: sticky;
+  top: 92px;
+}
+
+.assistant-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.assistant-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.assistant-step-title {
+  margin: 0;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.assistant-step-icon {
+  font-size: 22px;
+}
+
+.assistant-step-num {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.assistant-step-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+/* Progress Bar */
+.assistant-progress {
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.assistant-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--primary), var(--success));
+  transition: width 0.4s ease;
+}
+
+/* Component List */
+.assistant-component-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 420px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.assistant-component-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.assistant-component-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+}
+
+.assistant-component-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  text-align: left;
+  width: 100%;
+  color: var(--text);
+}
+
+.assistant-component-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--primary);
+  transform: translateX(4px);
+}
+
+.assistant-component-card.is-selected {
+  border-color: var(--success);
+  background: rgba(34, 197, 94, 0.12);
+}
+
+.acc-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.acc-name {
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.acc-brand {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.acc-price {
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--success);
+  white-space: nowrap;
+}
+
+/* Panel Footer */
+.assistant-panel-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--glass-border);
+}
+
+.assistant-total {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.assistant-total span:first-child {
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.assistant-total-price {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--success);
+}
+
+.btn-sm {
+  padding: 8px 14px;
+  font-size: 13px;
+  border-radius: 8px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PC 3D Visual — Interactive case with perspective
+   ═══════════════════════════════════════════════════════════════ */
+.pc3d-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  perspective: 800px;
+}
+
+.pc3d-case {
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 3 / 4;
+  background: linear-gradient(145deg, #1a1f35, #0d1220);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  position: relative;
+  transform: rotateY(-12deg) rotateX(3deg);
+  transform-style: preserve-3d;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 0 40px rgba(59, 130, 246, 0.05);
+  transition: transform 0.4s ease;
+  overflow: hidden;
+}
+
+.pc3d-case:hover {
+  transform: rotateY(-6deg) rotateX(1deg);
+}
+
+.pc3d-inner {
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.pc3d-slot {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  color: var(--muted);
+  font-size: 10px;
+  padding: 4px;
+  overflow: hidden;
+}
+
+.pc3d-slot:hover {
+  border-color: var(--primary);
+  background: rgba(59, 130, 246, 0.08);
+  color: var(--text);
+}
+
+.pc3d-slot.current {
+  border-color: var(--primary);
+  background: rgba(59, 130, 246, 0.15);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+  animation: slotPulse 2s infinite;
+}
+
+.pc3d-slot.filled {
+  border: 1px solid var(--success);
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--text);
+}
+
+@keyframes slotPulse {
+  0%, 100% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.2); }
+  50% { box-shadow: 0 0 25px rgba(59, 130, 246, 0.4); }
+}
+
+.pc3d-slot-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.pc3d-slot-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.pc3d-slot-price {
+  font-size: 8px;
+  font-weight: 800;
+  color: var(--success);
+}
+
+.pc3d-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 20%, rgba(59, 130, 246, 0.12), transparent 60%);
+  pointer-events: none;
+}
+
+.pc3d-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.pc3d-counter-fill {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.pc3d-counter-sep {
+  color: var(--muted);
+}
+
+.pc3d-counter-total {
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.pc3d-counter-label {
+  margin-left: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Responsive adjustments
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 700px) {
+  .platform-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .assistant-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .assistant-pc {
+    position: static;
+    display: flex;
+    justify-content: center;
+  }
+
+  .pc3d-case {
+    max-width: 240px;
+  }
+
+  .assistant-panel-foot {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
