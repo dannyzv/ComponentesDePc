@@ -212,6 +212,13 @@ button {
   font-weight: 800;
 }
 
+.navbar-logo-img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
 .navbar-links {
   display: flex;
   gap: 8px;

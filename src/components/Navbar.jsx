@@ -13,7 +13,7 @@ export default function Navbar() {
   return (
     <header className="navbar glass">
       <NavLink to="/" className="navbar-brand">
-        <span className="navbar-logo">CPU</span>
+        <img src="/logo.png.png" alt="Logo" className="navbar-logo-img" />
         <span>PC Builder</span>
       </NavLink>
       <nav className="navbar-links">
